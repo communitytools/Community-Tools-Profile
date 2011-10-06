@@ -432,7 +432,7 @@ function cmtls_profile_install() {
 
   // Enable the admin theme.
   db_update('system')
-    ->fields(array('status' => 1))
+    ->fields(array('status' => 0))
     ->condition('type', 'theme')
     ->condition('name', 'seven')
     ->execute();
