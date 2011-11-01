@@ -277,30 +277,15 @@ function cmtls_profile_install() {
   // Allow visitor account creation with administrative approval.
   variable_set('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL);
 
-  /* causes SQL error
-  // Create a default vocabulary named "Tags", enabled for the 'article' content type.
-  $description = st('Use tags to group articles on similar topics into categories.');
-  $help = st('Enter a comma-separated list of words to describe your content.');
-  $vocabulary = (object) array(
-    'name' => st('Tags'),
-    'description' => $description,
-    'machine_name' => 'tags',
-    'help' => $help,
-
-  );
-  taxonomy_vocabulary_save($vocabulary);
-   * 
-   */
-
   $field = array(
-    'field_name' => 'field_' . $vocabulary->machine_name,
+    'field_name' => 'field_tags',
     'type' => 'taxonomy_term_reference',
     // Set cardinality to unlimited for tagging.
     'cardinality' => FIELD_CARDINALITY_UNLIMITED,
     'settings' => array(
       'allowed_values' => array(
         array(
-          'vocabulary' => $vocabulary->machine_name,
+          'vocabulary' => 'tags',
           'parent' => 0,
         ),
       ),
@@ -309,11 +294,11 @@ function cmtls_profile_install() {
   field_create_field($field);
 
   $instance = array(
-    'field_name' => 'field_' . $vocabulary->machine_name,
+    'field_name' => 'field_tags',
     'entity_type' => 'node',
     'label' => 'Tags',
     'bundle' => 'article',
-    'description' => $vocabulary->help,
+    'description' => st('Enter a comma-separated list of words to describe your content.'),
     'widget' => array(
       'type' => 'taxonomy_autocomplete',
       'weight' => -4,
