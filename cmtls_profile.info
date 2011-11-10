@@ -4,8 +4,8 @@ core = 7.x
 
 dependencies[] = cmtls
 dependencies[] = cmtls_event
-dependencies[] = cmtls_map
-dependencies[] = cmtls_media
-dependencies[] = cmtls_post
+;dependencies[] = cmtls_map
+;dependencies[] = cmtls_media
+;dependencies[] = cmtls_post
 
 files[] = cmtls_profile.profile
