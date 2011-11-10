@@ -199,10 +199,10 @@ function cmtls_profile_install() {
   // documentation at: http://api.drupal.org/api/HEAD/function/hook_node_info.
   $types = array(
     array(
-      'type' => 'article',
-      'name' => st('Article'),
+      'type' => 'page',
+      'name' => st('Basic page'),
       'base' => 'node_content',
-      'description' => st('Use <em>articles</em> for time-sensitive content like news, press releases or blog posts.'),
+      'description' => st("Use <em>basic pages</em> for your static content, such as an 'About us' page."),
       'custom' => 1,
       'modified' => 1,
       'locked' => 0,
@@ -219,22 +219,22 @@ function cmtls_profile_install() {
   $rdf_mappings = array(
     array(
       'type' => 'node',
-      'bundle' => 'article',
+      'bundle' => 'page',
       'mapping' => array(
-        'field_image' => array(
-          'predicates' => array('og:image', 'rdfs:seeAlso'),
-          'type' => 'rel',
-        ),
-        'field_tags' => array(
-          'predicates' => array('dc:subject'),
-          'type' => 'rel',
-        ),
+        'rdftype' => array('foaf:Document'),
       ),
     ),
   );
   foreach ($rdf_mappings as $rdf_mapping) {
     rdf_mapping_save($rdf_mapping);
   }
+  
+  // Default "Basic page" to not be promoted and have comments disabled.
+  variable_set('node_options_page', array('status'));
+  variable_set('comment_page', COMMENT_NODE_HIDDEN);
+
+  // Don't display date and author information for "Basic page" nodes by default.
+  variable_set('node_submitted_page', FALSE);
 
   // Enable user picture support and set the default to a square thumbnail option.
   variable_set('user_pictures', '1');
@@ -244,98 +244,6 @@ function cmtls_profile_install() {
 
   // Allow visitor account creation with administrative approval.
   variable_set('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL);
-
-  $instance = array(
-    'field_name' => 'field_tags',
-    'entity_type' => 'node',
-    'label' => 'Tags',
-    'bundle' => 'article',
-    'description' => st('Enter a comma-separated list of words to describe your content.'),
-    'widget' => array(
-      'type' => 'taxonomy_autocomplete',
-      'weight' => -4,
-    ),
-    'display' => array(
-      'default' => array(
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 10,
-      ),
-      'teaser' => array(
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 10,
-      ),
-    ),
-  );
-  field_create_instance($instance);
-
-
-  // Create an image field named "Image", enabled for the 'article' content type.
-  // Many of the following values will be defaulted, they're included here as an illustrative examples.
-  // See http://api.drupal.org/api/function/field_create_field/7
-
-  $field = array(
-    'field_name' => 'field_image',
-    'type' => 'image',
-    'cardinality' => 1,
-    'locked' => FALSE,
-    'indexes' => array('fid' => array('fid')),
-    'settings' => array(
-      'uri_scheme' => 'public',
-      'default_image' => FALSE,
-    ),
-    'storage' => array(
-      'type' => 'field_sql_storage',
-      'settings' => array(),
-    ),
-  );
-  field_create_field($field);
-
-
-  // Many of the following values will be defaulted, they're included here as an illustrative examples.
-  // See http://api.drupal.org/api/function/field_create_instance/7
-  $instance = array(
-    'field_name' => 'field_image',
-    'entity_type' => 'node',
-    'label' => 'Image',
-    'bundle' => 'article',
-    'description' => st('Upload an image to go with this article.'),
-    'required' => FALSE,
-
-    'settings' => array(
-      'file_directory' => 'field/image',
-      'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
-      'max_resolution' => '',
-      'min_resolution' => '',
-      'alt_field' => TRUE,
-      'title_field' => '',
-    ),
-
-    'widget' => array(
-      'type' => 'image_image',
-      'settings' => array(
-        'progress_indicator' => 'throbber',
-        'preview_image_style' => 'thumbnail',
-      ),
-      'weight' => -1,
-    ),
-
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'type' => 'image',
-        'settings' => array('image_style' => 'large', 'image_link' => ''),
-        'weight' => -1,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'type' => 'image',
-        'settings' => array('image_style' => 'medium', 'image_link' => 'content'),
-        'weight' => -1,
-      ),
-    ),
-  );
-  field_create_instance($instance);
 
   // Enable default permissions for system roles.
   $filtered_html_permission = filter_permission_name($filtered_html_format);
@@ -375,4 +283,14 @@ function cmtls_profile_install() {
     ->execute();
   variable_set('admin_theme', 'seven');
   variable_set('node_admin_theme', '1');
+  
+  // ET locale settings
+  // date and time settings
+  variable_set('date_default_timezone', 'Europe/Tallinn');
+  variable_set('date_first_day', '1');
+  variable_set('date_format_long', 'l, j. F Y - G:i');
+  variable_set('date_format_medium', 'j. F Y - G:i');
+  variable_set('date_format_short', 'd.m.Y - H:i');
+  variable_set('site_default_country', 'EE');
+  
 }
