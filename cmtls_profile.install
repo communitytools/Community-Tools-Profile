@@ -293,4 +293,6 @@ function cmtls_profile_install() {
   variable_set('date_format_short', 'd.m.Y - H:i');
   variable_set('site_default_country', 'EE');
   
+  // set smallet teaser lenght
+  variable_set('teaser_length', 200);  
 }
