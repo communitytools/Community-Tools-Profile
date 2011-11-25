@@ -63,80 +63,175 @@ function cmtls_profile_install() {
   $full_html_format = (object) $full_html_format;
   filter_format_save($full_html_format);
 
-  // Enable some standard blocks.
-  $default_theme = variable_get('theme_default', 'bartik');
+  $default_theme = 'cmtls_base';
+  variable_set('theme_default', $default_theme);
+  
   $admin_theme = 'seven';
+  variable_set('admin_theme', $admin_theme);
+  
   $values = array(
+    // content region
+    array(
+      'module' => 'delta_blocks',
+      'delta' => 'breadcrumb',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => -31,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => -30,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    array(
+      'module' => 'delta_blocks',
+      'delta' => 'page-title',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => -29,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    array(
+      'module' => 'delta_blocks',
+      'delta' => 'tabs',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => -28,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
     array(
       'module' => 'system',
       'delta' => 'main',
       'theme' => $default_theme,
       'status' => 1,
-      'weight' => 0,
+      'weight' => -27,
       'region' => 'content',
       'pages' => '',
       'cache' => -1,
+      'title' => '',
     ),
+    // header first region
+    array(
+      'module' => 'delta_blocks',
+      'delta' => 'logo',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => -1,
+      'region' => 'header_first',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    array(
+      'module' => 'delta_blocks',
+      'delta' => 'site-name',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'header_first',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    // header second region
     array(
       'module' => 'search',
       'delta' => 'form',
       'theme' => $default_theme,
       'status' => 1,
       'weight' => -1,
-      'region' => 'sidebar_first',
+      'region' => 'header_second',
       'pages' => '',
       'cache' => -1,
+      'title' => '',
     ),
+    // toolbar first region
     array(
-      'module' => 'node',
-      'delta' => 'recent',
-      'theme' => $admin_theme,
+      'module' => 'delta_blocks',
+      'delta' => 'site-slogan',
+      'theme' => $default_theme,
       'status' => 1,
-      'weight' => 10,
-      'region' => 'dashboard_main',
+      'weight' => 0,
+      'region' => 'toolbar_first',
       'pages' => '',
       'cache' => -1,
+      'title' => '',
     ),
+    // toolbar second region
     array(
       'module' => 'user',
       'delta' => 'login',
       'theme' => $default_theme,
       'status' => 1,
-      'weight' => 0,
+      'weight' => -25,
+      'region' => 'toolbar_second',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'user-menu',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => -15,
+      'region' => 'toolbar_second',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '<none>',
+    ),
+    // sidebar first region
+    array(
+      'module' => 'menu',
+      'delta' => 'menu-cmtls-groups',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => -30,
       'region' => 'sidebar_first',
       'pages' => '',
       'cache' => -1,
+      'title' => st('Groups'),
     ),
+    // menu region
     array(
       'module' => 'system',
-      'delta' => 'navigation',
+      'delta' => 'main-menu',
       'theme' => $default_theme,
       'status' => 1,
-      'weight' => 0,
-      'region' => 'sidebar_first',
+      'weight' => -30,
+      'region' => 'menu',
       'pages' => '',
       'cache' => -1,
+      'title' => '<none>',
     ),
     array(
-      'module' => 'system',
-      'delta' => 'powered-by',
+      'module' => 'menu',
+      'delta' => 'menu-cmtls-global-toolbar',
       'theme' => $default_theme,
       'status' => 1,
-      'weight' => 10,
-      'region' => 'footer',
+      'weight' => -29,
+      'region' => 'menu',
       'pages' => '',
       'cache' => -1,
+      'title' => '<none>',
     ),
-    array(
-      'module' => 'system',
-      'delta' => 'help',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => 'help',
-      'pages' => '',
-      'cache' => -1,
-    ),
+    // admin blocks
     array(
       'module' => 'system',
       'delta' => 'main',
@@ -146,6 +241,7 @@ function cmtls_profile_install() {
       'region' => 'content',
       'pages' => '',
       'cache' => -1,
+      'title' => '',
     ),
     array(
       'module' => 'system',
@@ -156,6 +252,7 @@ function cmtls_profile_install() {
       'region' => 'help',
       'pages' => '',
       'cache' => -1,
+      'title' => '',
     ),
     array(
       'module' => 'user',
@@ -166,6 +263,7 @@ function cmtls_profile_install() {
       'region' => 'content',
       'pages' => '',
       'cache' => -1,
+      'title' => '',
     ),
     array(
       'module' => 'user',
@@ -176,6 +274,7 @@ function cmtls_profile_install() {
       'region' => 'dashboard_sidebar',
       'pages' => '',
       'cache' => -1,
+      'title' => '',
     ),
     array(
       'module' => 'search',
@@ -186,9 +285,10 @@ function cmtls_profile_install() {
       'region' => 'dashboard_sidebar',
       'pages' => '',
       'cache' => -1,
+      'title' => '',
     ),
   );
-  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache', 'title', ));
   foreach ($values as $record) {
     $query->values($record);
   }
@@ -275,24 +375,157 @@ function cmtls_profile_install() {
   // Update the menu router information.
   menu_rebuild();
 
-  // Enable the admin theme.
+  // Enable the cmtls_base theme.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', 'cmtls_base')
+    ->execute();
+  
+  // disable bartik and seven
+  db_update('system')
+    ->fields(array('status' => 0))
+    ->condition('type', 'theme')
+    ->condition('name', 'bartik')
+    ->execute();
+    
   db_update('system')
     ->fields(array('status' => 0))
     ->condition('type', 'theme')
     ->condition('name', 'seven')
     ->execute();
-  variable_set('admin_theme', 'seven');
+    
   variable_set('node_admin_theme', '1');
   
-  // ET locale settings
-  // date and time settings
-  variable_set('date_default_timezone', 'Europe/Tallinn');
-  variable_set('date_first_day', '1');
-  variable_set('date_format_long', 'l, j. F Y - G:i');
-  variable_set('date_format_medium', 'j. F Y - G:i');
-  variable_set('date_format_short', 'd.m.Y - H:i');
-  variable_set('site_default_country', 'EE');
+  variable_set('configurable_timezones', 0);
+  
+  if($_GET['locale'] == 'et') {
+    // ET locale settings
+    // date and time settings
+    variable_set('date_default_timezone', 'Europe/Tallinn');
+    variable_set('date_first_day', 1);
+    variable_set('date_format_long', 'l, j. F Y - G:i');
+    variable_set('date_format_medium', 'j. F Y - G:i');
+    variable_set('date_format_short', 'd.m.Y - H:i');
+    variable_set('site_default_country', 'EE');
+    variable_set('location_default_country', 'ee');
+  }
+  else {
+    // for the date module
+    variable_set('date_first_day', 0);
+    variable_set('date_format_long', 'l, F j, Y - H:i');
+    variable_set('date_format_medium', 'D, m/d/Y - H:i');
+    variable_set('date_format_short', 'm/d/Y - H:i');
+  }
   
   // set smallet teaser lenght
-  variable_set('teaser_length', 200);  
+  variable_set('teaser_length', 200);
+  
+  // gmap settings
+  variable_set('gmap_mm_type', 'gmap');
+  variable_set('gmap_markermanager', array (
+    'gmarkermanager' => 
+    array (
+      'borderPadding' => '256',
+      'maxZoom' => '4',
+      'trackMarkers' => 0,
+      'markerMinZoom' => '4',
+      'markerMaxZoom' => '0',
+    ),
+    'markermanager' => 
+    array (
+      'filename' => 'markermanager_packed.js',
+      'borderPadding' => '256',
+      'maxZoom' => '4',
+      'trackMarkers' => 0,
+      'markerMinZoom' => '4',
+      'markerMaxZoom' => '0',
+    ),
+    'markerclusterer' => 
+    array (
+      'filename' => 'markerclusterer_packed.js',
+      'gridSize' => '60',
+      'maxZoom' => '17',
+    ),
+    'clusterer' => 
+    array (
+      'filename' => 'Clusterer2.js',
+      'marker' => 'cluster',
+      'max_nocluster' => '150',
+      'cluster_min' => '5',
+      'max_lines' => '10',
+      'popup_mode' => 'orig',
+    ),
+    'clustermarker' => 
+    array (
+      'filename' => 'ClusterMarker.js',
+      'borderPadding' => '256',
+      'clusteringEnabled' => 1,
+      'clusterMarkerIcon' => '',
+      'clusterMarkerTitle' => '',
+      'fitMapMaxZoom' => '0',
+      'intersectPadding' => '0',
+    ),
+  ));
+  variable_set('gmap_default', array (
+    'width' => '300px',
+    'height' => '200px',
+    'latlong' => '40,0',
+    'zoom' => '3',
+    'maxzoom' => '14',
+    'styles' => 
+    array (
+      'line_default' => 
+      array (
+        0 => '0000ff',
+        1 => '5',
+        2 => '45',
+        3 => '',
+        4 => '',
+      ),
+      'poly_default' => 
+      array (
+        0 => '000000',
+        1 => '3',
+        2 => '25',
+        3 => 'ff0000',
+        4 => '45',
+      ),
+      'highlight_color' => 'ff0000',
+    ),
+    'controltype' => 'Small',
+    'mtc' => 'standard',
+    'maptype' => 'Map',
+    'baselayers' => 
+    array (
+      'Map' => 1,
+      'Satellite' => 1,
+      'Hybrid' => 1,
+      'Physical' => 0,
+    ),
+    'behavior' => 
+    array (
+      'locpick' => false,
+      'nodrag' => 0,
+      'nokeyboard' => 1,
+      'nomousezoom' => 0,
+      'nocontzoom' => 0,
+      'autozoom' => 0,
+      'dynmarkers' => 0,
+      'overview' => 0,
+      'collapsehack' => 0,
+      'scale' => 0,
+      'extramarkerevents' => false,
+      'clickableshapes' => false,
+      'googlebar' => 0,
+      'highlight' => 0,
+    ),
+    'markermode' => '0',
+    'line_colors' => 
+    array (
+      0 => '#00cc00',
+      1 => '#ff0000',
+      2 => '#0000ff',
+    ),
+  ));
 }
