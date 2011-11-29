@@ -499,8 +499,8 @@ function cmtls_profile_install() {
     'baselayers' => 
     array (
       'Map' => 1,
-      'Satellite' => 1,
-      'Hybrid' => 1,
+      'Satellite' => 0,
+      'Hybrid' => 0,
       'Physical' => 0,
     ),
     'behavior' => 
