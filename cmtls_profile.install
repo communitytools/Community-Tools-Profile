@@ -69,230 +69,9 @@ function cmtls_profile_install() {
   $admin_theme = 'seven';
   variable_set('admin_theme', $admin_theme);
   
-  $values = array(
-    // content region
-    array(
-      'module' => 'delta_blocks',
-      'delta' => 'breadcrumb',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => -31,
-      'region' => 'content',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '',
-    ),
-    array(
-      'module' => 'system',
-      'delta' => 'help',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => -30,
-      'region' => 'content',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '',
-    ),
-    array(
-      'module' => 'delta_blocks',
-      'delta' => 'page-title',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => -29,
-      'region' => 'content',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '',
-    ),
-    array(
-      'module' => 'delta_blocks',
-      'delta' => 'tabs',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => -28,
-      'region' => 'content',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '',
-    ),
-    array(
-      'module' => 'system',
-      'delta' => 'main',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => -27,
-      'region' => 'content',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '',
-    ),
-    // header first region
-    array(
-      'module' => 'delta_blocks',
-      'delta' => 'logo',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => -1,
-      'region' => 'header_first',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '',
-    ),
-    array(
-      'module' => 'delta_blocks',
-      'delta' => 'site-name',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => 'header_first',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '',
-    ),
-    // header second region
-    array(
-      'module' => 'search',
-      'delta' => 'form',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => -1,
-      'region' => 'header_second',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '',
-    ),
-    // toolbar first region
-    array(
-      'module' => 'delta_blocks',
-      'delta' => 'site-slogan',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => 'toolbar_first',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '',
-    ),
-    // toolbar second region
-    array(
-      'module' => 'user',
-      'delta' => 'login',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => -25,
-      'region' => 'toolbar_second',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '',
-    ),
-    array(
-      'module' => 'system',
-      'delta' => 'user-menu',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => -15,
-      'region' => 'toolbar_second',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '<none>',
-    ),
-    // sidebar first region
-    array(
-      'module' => 'menu',
-      'delta' => 'menu-cmtls-groups',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => -30,
-      'region' => 'sidebar_first',
-      'pages' => '',
-      'cache' => -1,
-      'title' => st('Groups'),
-    ),
-    // menu region
-    array(
-      'module' => 'system',
-      'delta' => 'main-menu',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => -30,
-      'region' => 'menu',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '<none>',
-    ),
-    array(
-      'module' => 'menu',
-      'delta' => 'menu-cmtls-global-toolbar',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => -29,
-      'region' => 'menu',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '<none>',
-    ),
-    // admin blocks
-    array(
-      'module' => 'system',
-      'delta' => 'main',
-      'theme' => $admin_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => 'content',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '',
-    ),
-    array(
-      'module' => 'system',
-      'delta' => 'help',
-      'theme' => $admin_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => 'help',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '',
-    ),
-    array(
-      'module' => 'user',
-      'delta' => 'login',
-      'theme' => $admin_theme,
-      'status' => 1,
-      'weight' => 10,
-      'region' => 'content',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '',
-    ),
-    array(
-      'module' => 'user',
-      'delta' => 'new',
-      'theme' => $admin_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => 'dashboard_sidebar',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '',
-    ),
-    array(
-      'module' => 'search',
-      'delta' => 'form',
-      'theme' => $admin_theme,
-      'status' => 1,
-      'weight' => -10,
-      'region' => 'dashboard_sidebar',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '',
-    ),
-  );
-  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache', 'title', ));
-  foreach ($values as $record) {
-    $query->values($record);
-  }
-  $query->execute();
+  cmtls_base_blocks($default_theme);
+  cmtls_admin_blocks($admin_theme);
+
 
   // Insert default pre-defined node types into the database. For a complete
   // list of available node type attributes, refer to the node type API
@@ -347,8 +126,54 @@ function cmtls_profile_install() {
 
   // Enable default permissions for system roles.
   $filtered_html_permission = filter_permission_name($filtered_html_format);
-  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content', 'access comments', $filtered_html_permission));
-  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('access content', 'access comments', 'post comments', 'skip comment approval', $filtered_html_permission));
+  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array(
+    'access content',
+    'access comments',
+    $filtered_html_permission,
+    'access user profiles',
+    'search content',
+    'use advanced search',
+    'view media',
+    'view node map',
+    'view own unpublished content',
+  ));
+  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array(
+    'access content',
+    'access comments',
+    'post comments',
+    'skip comment approval',
+    $filtered_html_permission,
+    'access user profiles',
+    'create cmtls_app content',
+    'create cmtls_event content',
+    'create cmtls_group content',
+    'create cmtls_location content',
+    'create cmtls_post content',
+    'create media_gallery content',
+    'delete own cmtls_app content',
+    'delete own cmtls_event content',
+    'delete own cmtls_group content',
+    'delete own cmtls_location content',
+    'delete own cmtls_post content',
+    'delete own media_gallery content',
+    'edit own cmtls_app content',
+    'edit own cmtls_event content',
+    'edit own cmtls_group content',
+    'edit own cmtls_location content',
+    'edit own cmtls_post content',
+    'edit own comments',
+    'edit own media_gallery content',
+    'import media',
+    'search content',
+    'submit latitude/longitude',
+    'use advanced search',
+    'use text format filtered_html',
+    'view location directory',
+    'view media',
+    'view node location table',
+    'view node map',
+    'view own unpublished content',
+  ));
 
   // Create a default role for site administrators, with all available permissions assigned.
   $admin_role = new stdClass();
@@ -418,7 +243,7 @@ function cmtls_profile_install() {
     variable_set('date_format_short', 'm/d/Y - H:i');
   }
   
-  // set smallet teaser lenght
+  // set smaller teaser lenght
   variable_set('teaser_length', 200);
   
   // gmap settings
@@ -528,4 +353,281 @@ function cmtls_profile_install() {
       2 => '#0000ff',
     ),
   ));
+  
+  // logintoboggan variables
+  variable_set('logintoboggan_confirm_email_at_registration', 0);
+  variable_set('logintoboggan_immediate_login_on_register', 1);
+  variable_set('logintoboggan_login_block_message', '');
+  variable_set('logintoboggan_login_block_type', 2);
+  variable_set('logintoboggan_login_successful_message', 0);
+  variable_set('logintoboggan_login_with_email', 1);
+  variable_set('logintoboggan_minimum_password_length', 0);
+  variable_set('logintoboggan_unified_login', 1);
+  
+  // disable OG rules
+  db_update('rules_config')
+  ->fields(array('status' => 0))
+  ->condition('module', 'og')
+  ->execute();
+
+  // disable OG views
+  $views_status = variable_get('views_defaults', array());
+  $views_status['og_user_groups'] = TRUE;
+  $views_status['og_members'] = TRUE;
+  $views_status['og_nodes'] = TRUE;
+  $views_status['og_list'] = TRUE;
+  variable_set('views_defaults', $views_status);
+  
+  // create the main group
+  cmtls_create_main_group();
+  
+  // set the frontpage
+  variable_set('site_frontpage', 'node/1');
+}
+
+function cmtls_base_blocks($theme) {
+  $values = array(
+    // content region
+    array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => -31,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    array(
+      'module' => 'delta_blocks',
+      'delta' => 'messages',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => -30,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'main',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => -29,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    // header first region
+    array(
+      'module' => 'delta_blocks',
+      'delta' => 'logo',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => -25,
+      'region' => 'header_first',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    array(
+      'module' => 'delta_blocks',
+      'delta' => 'site-name',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => -24,
+      'region' => 'header_first',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    array(
+      'module' => 'delta_blocks',
+      'delta' => 'site-slogan',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => -23,
+      'region' => 'header_first',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    // toolbar second region
+    array(
+      'module' => 'system',
+      'delta' => 'user-menu',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => -24,
+      'region' => 'toolbar_second',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '<none>',
+    ),
+    array(
+      'module' => 'search',
+      'delta' => 'form',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => -23,
+      'region' => 'toolbar_second',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    array(
+      'module' => 'user',
+      'delta' => 'login',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => -22,
+      'region' => 'toolbar_second',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    // menu region
+    array(
+      'module' => 'system',
+      'delta' => 'main-menu',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => -24,
+      'region' => 'menu',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '<none>',
+    ),
+    // preface first
+    array(
+      'module' => 'delta_blocks',
+      'delta' => 'page-title',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => -31,
+      'region' => 'preface_first',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '<none>',
+    ),
+    array(
+      'module' => 'views',
+      'delta' => 'cmtls_common_elements-block_3',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => -30,
+      'region' => 'preface_first',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '<none>',
+    ),
+    // preface second
+    array(
+      'module' => 'cmtls',
+      'delta' => 'cmtls_edit_buttons',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => -30,
+      'region' => 'preface_second',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '<none>',
+    ),
+    // footer second
+    array(
+      'module' => 'user',
+      'delta' => 'online',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => -30,
+      'region' => 'footer_second',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '<none>',
+    ),
+    array(
+      'module' => 'cmtls',
+      'delta' => 'cmtls_powered_by',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => -29,
+      'region' => 'footer_second',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '<none>',
+    ),
+  );
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache', 'title', ));
+  foreach ($values as $record) {
+    $query->values($record);
+  }
+  $query->execute();
+}
+
+function cmtls_admin_blocks($theme) {
+  $values = array(
+    array(
+      'module' => 'system',
+      'delta' => 'main',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'help',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    array(
+      'module' => 'user',
+      'delta' => 'login',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => 10,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    array(
+      'module' => 'user',
+      'delta' => 'new',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'dashboard_sidebar',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+    array(
+      'module' => 'search',
+      'delta' => 'form',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => -10,
+      'region' => 'dashboard_sidebar',
+      'pages' => '',
+      'cache' => -1,
+      'title' => '',
+    ),
+  );
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache', 'title', ));
+  foreach ($values as $record) {
+    $query->values($record);
+  }
+  $query->execute();
 }

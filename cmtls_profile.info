@@ -2,6 +2,28 @@ name = Community Tools
 description = Community Tools
 core = 7.x
 
+dependencies[] = "advanced_help"
+dependencies[] = "help"
+dependencies[] = "ajax_comments"
+dependencies[] = "context_ui"
+dependencies[] = "field_ui"
+dependencies[] = "og_ui"
+dependencies[] = "views_ui"
+dependencies[] = "pathauto"
+dependencies[] = "rdf"
+dependencies[] = "search"
+dependencies[] = "admin_menu"
+dependencies[] = "fb_connect"
+dependencies[] = "fb_user"
+dependencies[] = "fb_registration"
+dependencies[] = "logintoboggan"
+dependencies[] = "module_filter"
+dependencies[] = "rules_admin"
+dependencies[] = "comment"
+dependencies[] = "context"
+dependencies[] = "delta_blocks"
+
+// CT modules
 dependencies[] = cmtls
 dependencies[] = cmtls_event
 dependencies[] = cmtls_map
