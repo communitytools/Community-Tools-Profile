@@ -397,7 +397,7 @@ function cmtls_base_blocks($theme) {
       'region' => 'content',
       'pages' => '',
       'cache' => -1,
-      'title' => '',
+      'title' => '<none>',
     ),
     array(
       'module' => 'delta_blocks',
@@ -408,7 +408,7 @@ function cmtls_base_blocks($theme) {
       'region' => 'content',
       'pages' => '',
       'cache' => -1,
-      'title' => '',
+      'title' => '<none>',
     ),
     array(
       'module' => 'system',
@@ -419,7 +419,7 @@ function cmtls_base_blocks($theme) {
       'region' => 'content',
       'pages' => '',
       'cache' => -1,
-      'title' => '',
+      'title' => '<none>',
     ),
     // header first region
     array(
@@ -431,7 +431,7 @@ function cmtls_base_blocks($theme) {
       'region' => 'header_first',
       'pages' => '',
       'cache' => -1,
-      'title' => '',
+      'title' => '<none>',
     ),
     array(
       'module' => 'delta_blocks',
@@ -442,7 +442,7 @@ function cmtls_base_blocks($theme) {
       'region' => 'header_first',
       'pages' => '',
       'cache' => -1,
-      'title' => '',
+      'title' => '<none>',
     ),
     array(
       'module' => 'delta_blocks',
@@ -453,7 +453,7 @@ function cmtls_base_blocks($theme) {
       'region' => 'header_first',
       'pages' => '',
       'cache' => -1,
-      'title' => '',
+      'title' => '<none>',
     ),
     // toolbar second region
     array(
@@ -476,7 +476,7 @@ function cmtls_base_blocks($theme) {
       'region' => 'toolbar_second',
       'pages' => '',
       'cache' => -1,
-      'title' => '',
+      'title' => '<none>',
     ),
     array(
       'module' => 'user',
@@ -487,7 +487,7 @@ function cmtls_base_blocks($theme) {
       'region' => 'toolbar_second',
       'pages' => '',
       'cache' => -1,
-      'title' => '',
+      'title' => '<none>',
     ),
     // menu region
     array(
@@ -578,7 +578,7 @@ function cmtls_admin_blocks($theme) {
       'region' => 'content',
       'pages' => '',
       'cache' => -1,
-      'title' => '',
+      'title' => '<none>',
     ),
     array(
       'module' => 'system',
@@ -589,7 +589,7 @@ function cmtls_admin_blocks($theme) {
       'region' => 'help',
       'pages' => '',
       'cache' => -1,
-      'title' => '',
+      'title' => '<none>',
     ),
     array(
       'module' => 'user',
@@ -600,7 +600,7 @@ function cmtls_admin_blocks($theme) {
       'region' => 'content',
       'pages' => '',
       'cache' => -1,
-      'title' => '',
+      'title' => '<none>',
     ),
     array(
       'module' => 'user',
@@ -611,7 +611,7 @@ function cmtls_admin_blocks($theme) {
       'region' => 'dashboard_sidebar',
       'pages' => '',
       'cache' => -1,
-      'title' => '',
+      'title' => '<none>',
     ),
     array(
       'module' => 'search',
@@ -622,7 +622,7 @@ function cmtls_admin_blocks($theme) {
       'region' => 'dashboard_sidebar',
       'pages' => '',
       'cache' => -1,
-      'title' => '',
+      'title' => '<none>',
     ),
   );
   $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache', 'title', ));
