@@ -22,6 +22,8 @@ dependencies[] = "rules_admin"
 dependencies[] = "comment"
 dependencies[] = "context"
 dependencies[] = "delta_blocks"
+dependencies[] = "features_tools"
+dependencies[] = "diff"
 
 // CT modules
 dependencies[] = cmtls
