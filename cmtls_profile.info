@@ -24,6 +24,7 @@ dependencies[] = "context"
 dependencies[] = "delta_blocks"
 dependencies[] = "features_tools"
 dependencies[] = "transliteration"
+dependencies[] = "redirect"
 
 // CT modules
 dependencies[] = cmtls
