@@ -248,6 +248,10 @@ function cmtls_profile_install() {
   // set smaller teaser lenght
   variable_set('teaser_length', 200);
   
+  // alias' settings
+  variable_set('pathauto_transliterate', 1);
+  variable_set('pathauto_update_action', 1);
+  
   // gmap settings
   variable_set('gmap_mm_type', 'gmap');
   variable_set('gmap_markermanager', array (
