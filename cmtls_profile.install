@@ -173,6 +173,7 @@ function cmtls_profile_install() {
     'view node location table',
     'view node map',
     'view own unpublished content',
+    'administer media',
   ));
 
   // Create a default role for site administrators, with all available permissions assigned.
