@@ -23,6 +23,7 @@ dependencies[] = "comment"
 dependencies[] = "context"
 dependencies[] = "delta_blocks"
 dependencies[] = "features_tools"
+dependencies[] = "transliteration"
 
 // CT modules
 dependencies[] = cmtls
