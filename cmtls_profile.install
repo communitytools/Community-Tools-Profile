@@ -390,6 +390,9 @@ function cmtls_profile_install() {
   // set the frontpage
   variable_set('site_frontpage', 'node/1');
   
+  // realname config
+  variable_set('realname_pattern', '[user:field_cmtls_firstname] [user:field_cmtls_lastname]');
+  
   // OG global permissions
   db_query('DELETE FROM {og_role_permission}')->execute();
   
