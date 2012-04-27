@@ -176,7 +176,7 @@ function cmtls_profile_install() {
     'administer media',
     'cancel account',
   ));
-
+  
   // Create a default role for site administrators, with all available permissions assigned.
   $admin_role = new stdClass();
   $admin_role->name = 'administrator';
@@ -372,9 +372,9 @@ function cmtls_profile_install() {
   
   // disable OG rules
   db_update('rules_config')
-  ->fields(array('status' => 0))
-  ->condition('module', 'og')
-  ->execute();
+    ->fields(array('status' => 0))
+    ->condition('module', 'og')
+    ->execute();
 
   // disable OG views
   $views_status = variable_get('views_defaults', array());
@@ -389,6 +389,70 @@ function cmtls_profile_install() {
   
   // set the frontpage
   variable_set('site_frontpage', 'node/1');
+  
+  // OG global permissions
+  db_query('DELETE FROM {og_role_permission}')->execute();
+  
+  // non-member
+  cmtls_og_role_grant_permissions(1, array(
+    'subscribe' => 'og_ui',
+    'subscribe without approval' => 'og_ui',
+  ));
+  
+  // member
+  cmtls_og_role_grant_permissions(2, array(
+    'unsubscribe' => 'og_ui',
+    'delete own cmtls_app content' => 'og',
+    'delete own cmtls_event content' => 'og',
+    'delete own cmtls_location content' => 'og',
+    'delete own cmtls_post content' => 'og',
+    'delete own media_gallery content' => 'og',
+    'update own cmtls_event content' => 'og',
+    'update own cmtls_location content' => 'og',
+    'update own cmtls_post content' => 'og',
+    'update own media_gallery content' => 'og',
+  ));
+
+  // admin
+  cmtls_og_role_grant_permissions(3, array(
+    'add user' => 'og_ui',
+    'approve and deny subscription' => 'og_ui',
+    'unsubscribe' => 'og_ui',
+    'administer group' => 'og',
+    'delete any cmtls_app content' => 'og',
+    'delete any cmtls_event content' => 'og',
+    'delete any cmtls_location content' => 'og',
+    'delete any cmtls_post content' => 'og',
+    'delete any media_gallery content' => 'og',
+    'delete own cmtls_app content' => 'og',
+    'delete own cmtls_event content' => 'og',
+    'delete own cmtls_location content' => 'og',
+    'delete own cmtls_post content' => 'og',
+    'delete own media_gallery content' => 'og',
+    'update any cmtls_app content' => 'og',
+    'update any cmtls_event content' => 'og',
+    'update any cmtls_location content' => 'og',
+    'update any cmtls_post content' => 'og',
+    'update any media_gallery content' => 'og',
+    'update group' => 'og',
+    'update own cmtls_app content' => 'og',
+    'update own cmtls_event content' => 'og',
+    'update own cmtls_location content' => 'og',
+    'update own cmtls_post content' => 'og',
+    'update own media_gallery content' => 'og',
+  ));
+}
+
+function cmtls_og_role_grant_permissions($rid, $permissions = array()) {
+  foreach($permissions as $name => $module) {
+    db_merge('og_role_permission')
+      ->key(array(
+        'rid' => $rid,
+        'permission' => $name,
+        'module' => $module,
+      ))
+      ->execute();
+  }
 }
 
 function cmtls_base_blocks($theme) {
