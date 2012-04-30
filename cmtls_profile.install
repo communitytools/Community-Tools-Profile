@@ -384,17 +384,8 @@ function cmtls_profile_install() {
   $views_status['og_list'] = TRUE;
   variable_set('views_defaults', $views_status);
   
-  // create the main group
-  cmtls_create_main_group();
-  
-  // set the frontpage
-  variable_set('site_frontpage', 'node/1');
-  
   // realname config
   variable_set('realname_pattern', '[user:field_cmtls_firstname] [user:field_cmtls_lastname]');
-  
-  // OG global permissions
-  db_query('DELETE FROM {og_role_permission}')->execute();
   
   // non-member
   cmtls_og_role_grant_permissions(1, array(
@@ -444,18 +435,12 @@ function cmtls_profile_install() {
     'update own cmtls_post content' => 'og',
     'update own media_gallery content' => 'og',
   ));
-}
-
-function cmtls_og_role_grant_permissions($rid, $permissions = array()) {
-  foreach($permissions as $name => $module) {
-    db_merge('og_role_permission')
-      ->key(array(
-        'rid' => $rid,
-        'permission' => $name,
-        'module' => $module,
-      ))
-      ->execute();
-  }
+  
+  // create the main group
+  cmtls_create_main_group();
+  
+  // set the frontpage
+  variable_set('site_frontpage', 'node/1');
 }
 
 function cmtls_base_blocks($theme) {
