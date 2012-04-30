@@ -372,7 +372,7 @@ function cmtls_profile_install() {
   
   // disable OG rules
   db_update('rules_config')
-    ->fields(array('status' => 0))
+    ->fields(array('active' => 0))
     ->condition('module', 'og')
     ->execute();
 
