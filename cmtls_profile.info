@@ -34,3 +34,5 @@ dependencies[] = cmtls_media
 dependencies[] = cmtls_post
 
 files[] = cmtls_profile.profile
+
+version = "7.x-2.0-alpha2"
