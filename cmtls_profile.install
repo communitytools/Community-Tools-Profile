@@ -119,7 +119,8 @@ function cmtls_profile_install() {
   variable_set('user_pictures', '1');
   variable_set('user_picture_dimensions', '1024x1024');
   variable_set('user_picture_file_size', '800');
-  variable_set('user_picture_style', 'thumbnail');
+  // @todo: dynamically find the cmtls module location
+  variable_set('user_picture_default', 'sites/all/modules/cmtls/images/default-avatar.jpg');
 
   // Allow visitor account creation with administrative approval.
   variable_set('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL);
