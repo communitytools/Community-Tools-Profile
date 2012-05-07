@@ -25,6 +25,9 @@ dependencies[] = "delta_blocks"
 dependencies[] = "features_tools"
 dependencies[] = "transliteration"
 dependencies[] = "redirect"
+dependencies[] = "media_youtube"
+dependencies[] = "media_vimeo"
+dependencies[] = "wysiwyg"
 
 // CT modules
 dependencies[] = cmtls
