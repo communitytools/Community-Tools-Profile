@@ -11,27 +11,40 @@ function cmtls_profile_install() {
   $filtered_html_format = array(
     'format' => 'filtered_html',
     'name' => 'Filtered HTML',
-    'weight' => 0,
+    'cache' => '1',
+    'status' => '1',
+    'weight' => '0',
     'filters' => array(
-      // URL filter.
       'filter_url' => array(
-        'weight' => 0,
-        'status' => 1,
+        'weight' => '0',
+        'status' => '1',
+        'settings' => array(
+          'filter_url_length' => '72',
+        ),
       ),
-      // HTML filter.
       'filter_html' => array(
-        'weight' => 1,
-        'status' => 1,
+        'weight' => '1',
+        'status' => '1',
+        'settings' => array(
+          'allowed_html' => '<a> <em> <strong> <cite> <blockquote> <code> <ul> <ol> <li> <dl> <dt> <dd> <h2> <h3> <pre> <object> <embed> <iframe> <param>',
+          'filter_html_help' => 1,
+          'filter_html_nofollow' => 0,
+        ),
       ),
-      // Line break filter.
       'filter_autop' => array(
-        'weight' => 2,
-        'status' => 1,
+        'weight' => '2',
+        'status' => '1',
+        'settings' => array(),
       ),
-      // HTML corrector filter.
       'filter_htmlcorrector' => array(
-        'weight' => 10,
-        'status' => 1,
+        'weight' => '10',
+        'status' => '1',
+        'settings' => array(),
+      ),
+      'media_filter' => array(
+        'weight' => '10',
+        'status' => '1',
+        'settings' => array(),
       ),
     ),
   );
@@ -41,22 +54,31 @@ function cmtls_profile_install() {
   $full_html_format = array(
     'format' => 'full_html',
     'name' => 'Full HTML',
-    'weight' => 1,
+    'cache' => '1',
+    'status' => '1',
+    'weight' => '1',
     'filters' => array(
-      // URL filter.
       'filter_url' => array(
-        'weight' => 0,
-        'status' => 1,
+        'weight' => '0',
+        'status' => '1',
+        'settings' => array(
+          'filter_url_length' => '72',
+        ),
       ),
-      // Line break filter.
       'filter_autop' => array(
-        'weight' => 1,
-        'status' => 1,
+        'weight' => '1',
+        'status' => '1',
+        'settings' => array(),
       ),
-      // HTML corrector filter.
       'filter_htmlcorrector' => array(
-        'weight' => 10,
-        'status' => 1,
+        'weight' => '10',
+        'status' => '1',
+        'settings' => array(),
+      ),
+      'media_filter' => array(
+        'weight' => '10',
+        'status' => '1',
+        'settings' => array(),
       ),
     ),
   );
@@ -177,6 +199,7 @@ function cmtls_profile_install() {
     'view own unpublished content',
     'administer media',
     'cancel account',
+    'access draggableviews',
   ));
   
   // Create a default role for site administrators, with all available permissions assigned.
@@ -198,6 +221,7 @@ function cmtls_profile_install() {
     'link_title' => st('Home'),
     'link_path' => '<front>',
     'menu_name' => 'main-menu',
+    'weight' => -10,
   );
   menu_link_save($item);
 
