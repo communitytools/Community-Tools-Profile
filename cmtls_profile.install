@@ -91,6 +91,18 @@ function cmtls_profile_install() {
   $admin_theme = 'seven';
   variable_set('admin_theme', $admin_theme);
   
+  variable_set('delta_blocks_toggle', array(
+    'logo' => 'logo',
+    'site-name' => 'site-name',
+    'site-slogan' => 'site-slogan',
+    'page-title' => 'page-title',
+    'messages' => 'messages',
+    'branding' => 0,
+    'breadcrumb' => 0,
+    'tabs' => 0,
+    'action-links' => 0,
+    'feed-icons' => 0,
+  ));
   cmtls_base_blocks($default_theme);
   cmtls_admin_blocks($admin_theme);
 
