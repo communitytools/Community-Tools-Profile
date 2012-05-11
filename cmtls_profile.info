@@ -28,6 +28,9 @@ dependencies[] = "redirect"
 dependencies[] = "media_youtube"
 dependencies[] = "media_vimeo"
 dependencies[] = "wysiwyg"
+dependencies[] = "i18n_field"
+dependencies[] = "variable"
+dependencies[] = "locale"
 
 // CT modules
 dependencies[] = cmtls
