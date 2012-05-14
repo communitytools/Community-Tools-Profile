@@ -105,7 +105,8 @@ function cmtls_profile_install() {
   ));
   cmtls_base_blocks($default_theme);
   cmtls_admin_blocks($admin_theme);
-
+  
+  cmtls_add_custom_block();
 
   // Insert default pre-defined node types into the database. For a complete
   // list of available node type attributes, refer to the node type API
@@ -236,6 +237,16 @@ function cmtls_profile_install() {
     'weight' => -10,
   );
   menu_link_save($item);
+  
+  // disable the media_galleries menu item
+  db_merge('menu_links')
+    ->key(array(
+      'link_path' => 'taxonomy/term/1',
+    ))
+    ->fields(array(
+      'hidden' => 1,
+    ))
+    ->execute();
 
   // Update the menu router information.
   menu_rebuild();
@@ -725,5 +736,31 @@ function cmtls_admin_blocks($theme) {
   foreach ($values as $record) {
     $query->values($record);
   }
+  $query->execute();
+}
+
+function cmtls_add_custom_block() {
+  $delta = db_insert('block_custom')
+    ->fields(array(
+      'body' => t('Custom block body'),
+      'info' => t('Custom block description'),
+      'format' => 'full_html',
+    ))
+    ->execute();
+
+  $query = db_insert('block')->fields(array('visibility', 'pages', 'custom', 'title', 'module', 'theme', 'status', 'weight', 'delta', 'cache', 'region'));
+  $query->values(array(
+    'visibility' => 0,
+    'pages' => '',
+    'custom' => 0,
+    'title' => t('Custom block title'),
+    'module' => 'block',
+    'theme' => 'cmtls_base',
+    'status' => 1,
+    'weight' => 0,
+    'delta' => 1,
+    'cache' => DRUPAL_NO_CACHE,
+    'region' => 'footer_first',
+  ));
   $query->execute();
 }
