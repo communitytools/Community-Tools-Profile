@@ -608,18 +608,6 @@ function cmtls_base_blocks($theme) {
       'cache' => -1,
       'title' => '<none>',
     ),
-    // preface first
-    array(
-      'module' => 'delta_blocks',
-      'delta' => 'page-title',
-      'theme' => $theme,
-      'status' => 1,
-      'weight' => -31,
-      'region' => 'preface_first',
-      'pages' => '',
-      'cache' => -1,
-      'title' => '<none>',
-    ),
     array(
       'module' => 'views',
       'delta' => 'cmtls_common_elements-block_3',
