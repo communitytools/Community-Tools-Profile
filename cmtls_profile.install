@@ -758,7 +758,7 @@ function cmtls_add_custom_block() {
     'theme' => 'cmtls_base',
     'status' => 1,
     'weight' => 0,
-    'delta' => 1,
+    'delta' => $delta,
     'cache' => DRUPAL_NO_CACHE,
     'region' => 'footer_first',
   ));
