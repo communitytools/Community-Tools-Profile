@@ -541,8 +541,8 @@ function cmtls_base_blocks($theme) {
       'title' => '<none>',
     ),
     array(
-      'module' => 'delta_blocks',
-      'delta' => 'site-name',
+      'module' => 'cmtls',
+      'delta' => 'cmtls_site_title',
       'theme' => $theme,
       'status' => 1,
       'weight' => -24,
