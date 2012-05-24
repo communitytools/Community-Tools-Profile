@@ -84,6 +84,8 @@ function cmtls_profile_install() {
   );
   $full_html_format = (object) $full_html_format;
   filter_format_save($full_html_format);
+  
+  cmtls_wysiwyg_profiles();
 
   $default_theme = 'cmtls_base';
   variable_set('theme_default', $default_theme);
@@ -348,8 +350,8 @@ function cmtls_profile_install() {
     ),
   ));
   variable_set('gmap_default', array (
-    'width' => '300px',
-    'height' => '200px',
+    'width' => '100%',
+    'height' => '400px',
     'latlong' => '40,0',
     'zoom' => '3',
     'maxzoom' => '14',
@@ -390,7 +392,7 @@ function cmtls_profile_install() {
       'nokeyboard' => 1,
       'nomousezoom' => 0,
       'nocontzoom' => 0,
-      'autozoom' => 0,
+      'autozoom' => 1,
       'dynmarkers' => 0,
       'overview' => 0,
       'collapsehack' => 0,
@@ -752,3 +754,100 @@ function cmtls_add_custom_block() {
   ));
   $query->execute();
 }
+
+function cmtls_wysiwyg_profiles() {
+  $full_html = array(
+    'default' => 1,
+    'user_choose' => 0,
+    'show_toggle' => 1,
+    'theme' => 'advanced',
+    'language' => NULL,
+    'buttons' => array(
+      'default' => array(
+        'Bold' => 1,
+        'Italic' => 1,
+        'BulletedList' => 1,
+        'NumberedList' => 1,
+        'Link' => 1,
+        'Anchor' => 1,
+        'Source' => 1,
+        'Format' => 1,
+        'Table' => 1,
+      ),
+      'drupal' => array(
+        'media' => 1,
+      ),
+    ),
+    'toolbar_loc' => 'top',
+    'toolbar_align' => 'left',
+    'path_loc' => 'bottom',
+    'resizing' => 1,
+    'verify_html' => 1,
+    'preformatted' => 0,
+    'convert_fonts_to_spans' => 1,
+    'remove_linebreaks' => 1,
+    'apply_source_formatting' => 0,
+    'paste_auto_cleanup_on_paste' => 1,
+    'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
+    'css_setting' => 'theme',
+    'css_path' => '',
+    'css_classes' => '',
+  );
+  
+  $fields = array(
+    'format' => 'full_html',
+    'editor' => 'ckeditor',
+    'settings' => serialize($full_html),
+  );
+
+  db_insert('wysiwyg')->fields($fields)->execute();
+  
+  $filtered_html = array(
+    'default' => 1,
+    'user_choose' => 0,
+    'show_toggle' => 1,
+    'theme' => 'advanced',
+    'language' => NULL,
+    'buttons' => array(
+      'default' => array(
+        'Bold' => 1,
+        'Italic' => 1,
+        'BulletedList' => 1,
+        'NumberedList' => 1,
+        'Link' => 1,
+        'Anchor' => 1,
+        'Source' => 1,
+        'Format' => 1,
+        'Table' => 1,
+      ),
+      'drupal' => array(
+        'media' => 1,
+      ),
+    ),
+    'toolbar_loc' => 'top',
+    'toolbar_align' => 'left',
+    'path_loc' => 'bottom',
+    'resizing' => 1,
+    'verify_html' => 1,
+    'preformatted' => 0,
+    'convert_fonts_to_spans' => 1,
+    'remove_linebreaks' => 1,
+    'apply_source_formatting' => 0,
+    'paste_auto_cleanup_on_paste' => 1,
+    'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
+    'css_setting' => 'theme',
+    'css_path' => '',
+    'css_classes' => '',
+  );
+  
+  $fields = array(
+    'format' => 'filtered_html',
+    'editor' => 'ckeditor',
+    'settings' => serialize($filtered_html),
+  );
+
+  db_insert('wysiwyg')->fields($fields)->execute();
+}
+
+
+
