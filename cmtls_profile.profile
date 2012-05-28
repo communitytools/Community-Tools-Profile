@@ -37,8 +37,8 @@ function cmtls_profile_form_install_configure_form_alter(&$form, $form_state) {
   
   $form['site_information']['fb_secret'] = array(
     '#type' => 'textfield',
-    '#title' => t('Facebook APP Secret'),
-    '#description' => t('Facebook will generate this value when you create the application.'),
+    '#title' => st('Facebook APP Secret'),
+    '#description' => st('Facebook will generate this value when you create the application.'),
   );
   
   $form['#submit'][] = '_cmtls_profile_install_save';
