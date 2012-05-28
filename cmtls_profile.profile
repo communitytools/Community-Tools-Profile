@@ -31,8 +31,8 @@ function cmtls_profile_form_install_configure_form_alter(&$form, $form_state) {
   // ID, apikey and secret are shown on facebook.  User copies and pastes values.
   $form['site_information']['fb_apikey'] = array(
     '#type' => 'textfield',
-    '#title' => t('Facebook App ID'),
-    '#description' => t('Facebook will generate this value when you create the application.'),
+    '#title' => st('Facebook App ID'),
+    '#description' => st('Facebook will generate this value when you create the application.'),
   );
   
   $form['site_information']['fb_secret'] = array(

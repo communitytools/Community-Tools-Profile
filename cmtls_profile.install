@@ -732,8 +732,8 @@ function cmtls_admin_blocks($theme) {
 function cmtls_add_custom_block() {
   $delta = db_insert('block_custom')
     ->fields(array(
-      'body' => t('Custom block body'),
-      'info' => t('Custom block description'),
+      'body' => st('Custom block body'),
+      'info' => st('Custom block description'),
       'format' => 'full_html',
     ))
     ->execute();
@@ -743,7 +743,7 @@ function cmtls_add_custom_block() {
     'visibility' => 0,
     'pages' => '',
     'custom' => 0,
-    'title' => t('Custom block title'),
+    'title' => st('Custom block title'),
     'module' => 'block',
     'theme' => 'cmtls_base',
     'status' => 1,
