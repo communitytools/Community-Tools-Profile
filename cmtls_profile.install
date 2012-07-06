@@ -504,6 +504,17 @@ function cmtls_profile_install() {
 
   // Set the display type for search results
   variable_set('ds_search_view_mode', 'cmtls_teaser');
+
+  // Enable AJAX comments for content types
+  variable_set('ajax_comments_notify', 1);
+  variable_set('ajax_comments_node_types', array(
+    'cmtls_group' => 'cmtls_group',
+    'cmtls_app' => 'cmtls_app',
+    'cmtls_post' => 'cmtls_post',
+    'cmtls_location' => 'cmtls_location',
+    'cmtls_event' => 'cmtls_event',
+    'media_gallery' => 'cmtls_event',
+  ));
 }
 
 function cmtls_base_blocks($theme) {
