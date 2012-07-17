@@ -33,6 +33,7 @@ dependencies[] = "variable"
 dependencies[] = "locale"
 dependencies[] = "color"
 dependencies[] = "ds_search"
+dependencies[] = "og_ui"
 
 // CT modules
 dependencies[] = cmtls
