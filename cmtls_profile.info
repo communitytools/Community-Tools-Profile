@@ -19,6 +19,7 @@ dependencies[] = "fb_registration"
 dependencies[] = "logintoboggan"
 dependencies[] = "module_filter"
 dependencies[] = "rules_admin"
+dependencies[] = "rules_scheduler"
 dependencies[] = "comment"
 dependencies[] = "context"
 dependencies[] = "delta_blocks"
@@ -34,6 +35,8 @@ dependencies[] = "locale"
 dependencies[] = "color"
 dependencies[] = "ds_search"
 dependencies[] = "og_ui"
+dependencies[] = "hidden_captcha"
+dependencies[] = "nice_menus"
 
 // CT modules
 dependencies[] = cmtls
@@ -44,4 +47,4 @@ dependencies[] = cmtls_post
 
 files[] = cmtls_profile.profile
 
-version = "7.x-2.0-alpha3"
+version = "7.x-2.0-beta2"
