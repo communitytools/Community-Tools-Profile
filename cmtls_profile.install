@@ -971,4 +971,39 @@ function cmtls_update_7201() {
       'pages' => '',
     ))
     ->execute();
+
+  // Rerarrange the toolbar second blocks,
+  // due to style changes in CT base theme.
+  $query = db_merge('block')
+    ->key(array(
+      'module' => 'user',
+      'delta' => 'login',
+      'theme' => 'cmtls_base',
+    ))
+    ->fields(array(
+      'weight' => '-24',
+    ))
+    ->execute();
+
+  $query = db_merge('block')
+    ->key(array(
+      'module' => 'search',
+      'delta' => 'form',
+      'theme' => 'cmtls_base',
+    ))
+    ->fields(array(
+      'weight' => '-23',
+    ))
+    ->execute();
+
+  $query = db_merge('block')
+    ->key(array(
+      'module' => 'system',
+      'delta' => 'user-menu',
+      'theme' => 'cmtls_base',
+    ))
+    ->fields(array(
+      'weight' => '-22',
+    ))
+    ->execute();
 }
