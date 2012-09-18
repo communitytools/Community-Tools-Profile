@@ -910,6 +910,7 @@ function cmtls_update_7201() {
     'hidden_captcha',
     'nice_menus',
     'flag',
+    'admin_menu_toolbar',
   ));
 
   // Schedule the first daily mail.
