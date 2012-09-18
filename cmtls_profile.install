@@ -517,7 +517,7 @@ function cmtls_profile_install() {
   ));
 
   // Add updates.
-  cmtls_update_7201();
+  cmtls_profile_update_7201();
 }
 
 /**
@@ -903,7 +903,7 @@ function cmtls_wysiwyg_profiles() {
 /**
  * Update 2.0-beta2
  */
-function cmtls_update_7201() {
+function cmtls_profile_update_7201() {
   // Add new modules.
   module_enable(array(
     'rules_scheduler',
