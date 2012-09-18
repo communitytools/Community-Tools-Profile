@@ -909,6 +909,7 @@ function cmtls_update_7201() {
     'rules_scheduler',
     'hidden_captcha',
     'nice_menus',
+    'flag',
   ));
 
   // CAPTCHA.
