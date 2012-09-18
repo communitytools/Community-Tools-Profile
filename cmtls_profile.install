@@ -912,6 +912,14 @@ function cmtls_update_7201() {
     'flag',
   ));
 
+  // Schedule the first daily mail.
+  rules_scheduler_schedule_task(array(
+    'date' => strtotime('+1 day 14:00'),
+    'config' => 'rules_cmtls_daily_newsletter',
+    'state' => new RulesState(),
+    'identifier' => 'CT daily newsletter',
+  ));
+
   // CAPTCHA.
   cmtls_captcha_settings();
 
