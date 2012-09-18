@@ -1007,4 +1007,7 @@ function cmtls_update_7201() {
       'weight' => '-22',
     ))
     ->execute();
+
+  // Disable admin menu client side cache, see http://drupal.org/node/442560.
+  variable_set('admin_menu_cache_client', 0);
 }
