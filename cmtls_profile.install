@@ -911,6 +911,7 @@ function cmtls_profile_update_7201() {
     'nice_menus',
     'flag',
     'admin_menu_toolbar',
+    'webform',
   ));
 
   // Schedule the first daily mail.

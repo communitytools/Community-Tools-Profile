@@ -39,6 +39,7 @@ dependencies[] = "ds_search"
 dependencies[] = "og_ui"
 dependencies[] = "hidden_captcha"
 dependencies[] = "nice_menus"
+dependencies[] = "webform"
 
 // CT modules
 dependencies[] = cmtls
