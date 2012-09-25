@@ -1009,6 +1009,12 @@ function cmtls_profile_update_7201() {
     ))
     ->execute();
 
+  // Remove the edit buttons block, this is now handled by Context.
+  $query = db_delete('block')
+    ->condition('module', 'cmtls')
+    ->condition('delta', 'cmtls_edit_buttons')
+    ->execute();
+
   // Disable admin menu client side cache, see http://drupal.org/node/442560.
   variable_set('admin_menu_cache_client', 0);
 }
