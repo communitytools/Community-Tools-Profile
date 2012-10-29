@@ -1017,4 +1017,20 @@ function cmtls_profile_update_7201() {
 
   // Disable admin menu client side cache, see http://drupal.org/node/442560.
   variable_set('admin_menu_cache_client', 0);
+
+  // Update the custom block to "About us" block.
+  db_update('block')
+    ->fields(array('title' => st('About us')))
+    ->condition('module', 'block')
+    ->condition('title', st('Custom block title'))
+    ->execute();
+
+  db_update('block_custom')
+    ->fields(array(
+      'body' => st('This is community website running on Community Tools, a distribution on Drupal.'),
+      'info' => st('About us'),
+    ))
+    ->condition('body', st('Custom block body'))
+    ->condition('info', st('Custom block description'))
+    ->execute();
 }
