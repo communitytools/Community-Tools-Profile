@@ -277,9 +277,8 @@ function cmtls_profile_install() {
 
   variable_set('configurable_timezones', 0);
 
-  if($_GET['locale'] == 'et') {
-    // ET locale settings
-    // date and time settings
+  // ET locale settings.
+  if($GLOBALS['install_state']['parameters']['locale'] == 'et') {
     variable_set('date_default_timezone', 'Europe/Tallinn');
     variable_set('date_first_day', 1);
     variable_set('date_format_long', 'l, j. F Y - G:i');
@@ -289,7 +288,7 @@ function cmtls_profile_install() {
     variable_set('location_default_country', 'ee');
   }
   else {
-    // for the date module
+    // Just for the date module the default en locale settings.
     variable_set('date_first_day', 0);
     variable_set('date_format_long', 'l, F j, Y - H:i');
     variable_set('date_format_medium', 'D, m/d/Y - H:i');
