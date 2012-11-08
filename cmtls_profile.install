@@ -929,6 +929,9 @@ function cmtls_profile_update_7201() {
   $ajax_comments['media_gallery'] = 'media_gallery';
   variable_set('ajax_comments_node_types', $ajax_comments);
 
+  // Set the i18n language else field translations won't work.
+  variable_set('i18n_string_source_language', 'en');
+
   // Keep old aliases, this is need for migrated sites.
   variable_set('pathauto_update_action', 1);
 
