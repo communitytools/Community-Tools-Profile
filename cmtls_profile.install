@@ -517,6 +517,9 @@ function cmtls_profile_install() {
 
   // Add updates.
   cmtls_profile_update_7201();
+
+  // OG triggers access permissions rebuild.
+  node_access_rebuild();
 }
 
 /**
