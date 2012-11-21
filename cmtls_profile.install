@@ -277,9 +277,8 @@ function cmtls_profile_install() {
 
   variable_set('configurable_timezones', 0);
 
-  if($_GET['locale'] == 'et') {
-    // ET locale settings
-    // date and time settings
+  // ET locale settings.
+  if($GLOBALS['install_state']['parameters']['locale'] == 'et') {
     variable_set('date_default_timezone', 'Europe/Tallinn');
     variable_set('date_first_day', 1);
     variable_set('date_format_long', 'l, j. F Y - G:i');
@@ -289,7 +288,7 @@ function cmtls_profile_install() {
     variable_set('location_default_country', 'ee');
   }
   else {
-    // for the date module
+    // Just for the date module the default en locale settings.
     variable_set('date_first_day', 0);
     variable_set('date_format_long', 'l, F j, Y - H:i');
     variable_set('date_format_medium', 'D, m/d/Y - H:i');
@@ -518,6 +517,9 @@ function cmtls_profile_install() {
 
   // Add updates.
   cmtls_profile_update_7201();
+
+  // OG triggers access permissions rebuild.
+  node_access_rebuild();
 }
 
 /**
@@ -929,6 +931,9 @@ function cmtls_profile_update_7201() {
   $ajax_comments = variable_get('ajax_comments_node_types', array());
   $ajax_comments['media_gallery'] = 'media_gallery';
   variable_set('ajax_comments_node_types', $ajax_comments);
+
+  // Set the i18n language else field translations won't work.
+  variable_set('i18n_string_source_language', 'en');
 
   // Keep old aliases, this is need for migrated sites.
   variable_set('pathauto_update_action', 1);
