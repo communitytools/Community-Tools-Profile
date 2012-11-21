@@ -1038,4 +1038,17 @@ function cmtls_profile_update_7201() {
     ->condition('body', st('Custom block body'))
     ->condition('info', st('Custom block description'))
     ->execute();
+
+  // New translations.
+  cmtls_install_translations();
+}
+
+/**
+ * When updating import the new dictionaries.
+ */
+function cmtls_install_translations() {
+  $languages = language_list('enabled');
+  foreach ($languages[1] as $key => &$value) {
+    batch_set(locale_batch_by_language($key));
+  }
 }
