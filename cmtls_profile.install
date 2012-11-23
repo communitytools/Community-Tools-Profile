@@ -531,6 +531,9 @@ function cmtls_captcha_settings() {
   // Hidden CAPTCHA settings.
   variable_set('captcha_default_challenge', 'hidden_captcha/Hidden CAPTCHA');
 
+  // Hidden CAPTCHA challenge question.
+  variable_set('hidden_captcha_label', 'Answer this 9 + 3');
+
   // Forms require CAPTCHA.
   captcha_set_form_id_setting('comment_node_cmtls_app_form', 'default');
   captcha_set_form_id_setting('comment_node_cmtls_event_form', 'default');
@@ -1038,4 +1041,17 @@ function cmtls_profile_update_7201() {
     ->condition('body', st('Custom block body'))
     ->condition('info', st('Custom block description'))
     ->execute();
+
+  // New translations.
+  cmtls_install_translations();
+}
+
+/**
+ * When updating import the new dictionaries.
+ */
+function cmtls_install_translations() {
+  $languages = language_list('enabled');
+  foreach ($languages[1] as $key => &$value) {
+    batch_set(locale_batch_by_language($key));
+  }
 }
