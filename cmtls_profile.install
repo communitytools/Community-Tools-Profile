@@ -1053,6 +1053,11 @@ function cmtls_profile_update_7202() {
     'manage own subscriptions',
   ));
 
+  // Grant permission to group admin to access the group admin pages.
+  cmtls_og_role_grant_permissions(3, array(
+    'access administration pages' => 'og',
+  ));
+
   // New translations.
   cmtls_install_translations();
 }
