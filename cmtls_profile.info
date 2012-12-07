@@ -52,3 +52,11 @@ dependencies[] = cmtls_post
 files[] = cmtls_profile.profile
 
 version = "7.x-2.0-beta2"
+
+
+; Information added by drush on 2012-11-23
+version = "7.x-2.0-beta2"
+core = "7.x"
+project = "cmtls_profile"
+datestamp = "1353679306"
+
