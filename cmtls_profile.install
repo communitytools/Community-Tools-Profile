@@ -517,6 +517,7 @@ function cmtls_profile_install() {
 
   // Add updates.
   cmtls_profile_update_7201();
+  cmtls_profile_update_7202();
 
   // OG triggers access permissions rebuild.
   node_access_rebuild();
@@ -1041,6 +1042,16 @@ function cmtls_profile_update_7201() {
     ->condition('body', st('Custom block body'))
     ->condition('info', st('Custom block description'))
     ->execute();
+}
+
+/**
+ * Update 2.0-beta3
+ */
+function cmtls_profile_update_7202() {
+  // Grant notifications change permissions to registered users.
+  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array(
+    'manage own subscriptions',
+  ));
 
   // New translations.
   cmtls_install_translations();
