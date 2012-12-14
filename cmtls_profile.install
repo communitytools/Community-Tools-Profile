@@ -1048,6 +1048,11 @@ function cmtls_profile_update_7201() {
  * Update 2.0-beta3
  */
 function cmtls_profile_update_7202() {
+  // Add new modules.
+  module_enable(array(
+    'openlayers_ui',
+  ));
+
   // Grant notifications change permissions to registered users.
   user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array(
     'manage own subscriptions',
