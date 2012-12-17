@@ -401,6 +401,18 @@ function cmtls_profile_install() {
     'media_gallery' => 'media_gallery',
   ));
 
+  // Webform node settings.
+  variable_set('comment_anonymous_webform', 0);
+  variable_set('comment_webform', 0);
+  variable_set('comment_default_mode_webform', 0);
+  variable_set('comment_default_per_page_webform', 50);
+  variable_set('comment_form_location_webform', 1);
+  variable_set('comment_preview_webform', 1);
+  variable_set('comment_subject_field_webform', 0);
+  variable_set('node_options_webform', array('status'));
+  variable_set('node_preview_webform', 0);
+  variable_set('node_submitted_webform', 0);
+
   // Add updates.
   cmtls_profile_update_7201();
   cmtls_profile_update_7202();
