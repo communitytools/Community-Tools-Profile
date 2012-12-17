@@ -173,7 +173,6 @@ function cmtls_profile_install() {
     'search content',
     'use advanced search',
     'view media',
-    'view node map',
     'view own unpublished content',
   ));
   user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array(
@@ -204,13 +203,9 @@ function cmtls_profile_install() {
     'edit own media_gallery content',
     'import media',
     'search content',
-    'submit latitude/longitude',
     'use advanced search',
     'use text format filtered_html',
-    'view location directory',
     'view media',
-    'view node location table',
-    'view node map',
     'view own unpublished content',
     'administer media',
     'cancel account',
@@ -285,7 +280,6 @@ function cmtls_profile_install() {
     variable_set('date_format_medium', 'j. F Y - G:i');
     variable_set('date_format_short', 'd.m.Y - H:i');
     variable_set('site_default_country', 'EE');
-    variable_set('location_default_country', 'ee');
   }
   else {
     // Just for the date module the default en locale settings.
