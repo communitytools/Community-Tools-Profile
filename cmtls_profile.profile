@@ -18,16 +18,6 @@ function cmtls_profile_form_install_configure_form_alter(&$form, $form_state) {
     '#weight' => -19,
   );
 
-  $form['site_information']['googlemap_api_key'] = array(
-    '#title' => st('Google Maps API Key'),
-    '#description' => st('If you wish to use maps on this site set your personal Googlemaps API key.  You must get this for each separate website at <a href="http://code.google.com/apis/maps/signup.html" target="_blank">Google Map API website</a>.'),
-    '#type' => 'textfield',
-    '#default_value' => variable_get('googlemap_api_key', ''),
-    '#weight' => 30,
-    '#size' => 50,
-    '#maxlength' => 255,
-  );
-
   // ID, apikey and secret are shown on facebook.  User copies and pastes values.
   $form['site_information']['fb_apikey'] = array(
     '#type' => 'textfield',
@@ -54,11 +44,6 @@ function cmtls_profile_form_install_configure_form_alter(&$form, $form_state) {
 
 function _cmtls_profile_install_save($form, &$form_state) {
   global $user;
-
-  if($form_state['values']['googlemap_api_key']) {
-    variable_set('googlemap_api_key', $form_state['values']['googlemap_api_key']);
-    variable_set('location_usegmap', 1);
-  }
 
   // Name the main group the same as the site name.
   $main_group = node_load(1);
