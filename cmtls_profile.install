@@ -415,7 +415,7 @@ function cmtls_profile_install() {
 
   // Add updates.
   cmtls_profile_update_7201();
-  cmtls_profile_update_7202();
+  cmtls_profile_beta3();
 
   // OG triggers access permissions rebuild.
   node_access_rebuild();
@@ -946,6 +946,16 @@ function cmtls_profile_update_7201() {
  * Update 2.0-beta3
  */
 function cmtls_profile_update_7202() {
+  cmtls_profile_beta3();
+
+  // New translations.
+  cmtls_install_translations();
+}
+
+/**
+ * Update 2.0-beta3
+ */
+function cmtls_profile_beta3() {
   // Add new modules.
   module_enable(array(
     'openlayers_ui',
@@ -960,9 +970,6 @@ function cmtls_profile_update_7202() {
   cmtls_og_role_grant_permissions(3, array(
     'access administration pages' => 'og',
   ));
-
-  // New translations.
-  cmtls_install_translations();
 }
 
 /**
