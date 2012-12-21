@@ -415,7 +415,7 @@ function cmtls_profile_install() {
 
   // Add updates.
   cmtls_profile_update_7201();
-  cmtls_profile_beta3();
+  //cmtls_profile_update_7202();
 
   // OG triggers access permissions rebuild.
   node_access_rebuild();
@@ -817,7 +817,6 @@ function cmtls_profile_update_7201() {
     'admin_menu_toolbar',
     'webform',
   ));
-
   // Schedule the first daily mail.
   rules_scheduler_schedule_task(array(
     'date' => strtotime('+1 day 14:00'),
@@ -839,10 +838,6 @@ function cmtls_profile_update_7201() {
 
   // Keep old aliases, this is need for migrated sites.
   variable_set('pathauto_update_action', 1);
-
-  // Enable CSS/JS compression.
-  variable_set('preprocess_css', 1);
-  variable_set('preprocess_js', 1);
 
   // Nice menus.
   variable_set('nice_menus_depth_1', -1);
@@ -946,16 +941,6 @@ function cmtls_profile_update_7201() {
  * Update 2.0-beta3
  */
 function cmtls_profile_update_7202() {
-  cmtls_profile_beta3();
-
-  // New translations.
-  cmtls_install_translations();
-}
-
-/**
- * Update 2.0-beta3
- */
-function cmtls_profile_beta3() {
   // Add new modules.
   module_enable(array(
     'openlayers_ui',
@@ -970,14 +955,23 @@ function cmtls_profile_beta3() {
   cmtls_og_role_grant_permissions(3, array(
     'access administration pages' => 'og',
   ));
+
+  // New translations.
+  cmtls_install_translations();
+
+  // Enable CSS/JS compression.
+  variable_set('preprocess_css', 1);
+  variable_set('preprocess_js', 1);
 }
 
 /**
  * When updating import the new dictionaries.
  */
 function cmtls_install_translations() {
-  $languages = language_list('enabled');
-  foreach ($languages[1] as $key => &$value) {
-    batch_set(locale_batch_by_language($key));
+  if(function_exists('language_list')) {
+    $languages = language_list('enabled');
+    foreach ($languages[1] as $key => &$value) {
+      batch_set(locale_batch_by_language($key));
+    }
   }
 }
