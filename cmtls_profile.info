@@ -1,5 +1,5 @@
 name = Community Tools
-description = Community Tools
+description = Install Community Tools, a Drupal distribution for managing community activities and communication
 core = 7.x
 
 dependencies[] = "advanced_help"
