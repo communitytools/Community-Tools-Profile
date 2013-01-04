@@ -415,7 +415,7 @@ function cmtls_profile_install() {
 
   // Add updates.
   cmtls_profile_update_7201();
-  //cmtls_profile_update_7202();
+  cmtls_profile_update_7202();
 
   // OG triggers access permissions rebuild.
   node_access_rebuild();
@@ -962,6 +962,9 @@ function cmtls_profile_update_7202() {
   // Enable CSS/JS compression.
   variable_set('preprocess_css', 1);
   variable_set('preprocess_js', 1);
+
+  // Do not show error messages.
+  variable_set('error_level', 0);
 }
 
 /**
