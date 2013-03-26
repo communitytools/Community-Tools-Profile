@@ -416,6 +416,7 @@ function cmtls_profile_install() {
   // Add updates.
   cmtls_profile_update_7201();
   cmtls_profile_update_7202();
+  cmtls_profile_update_7203();
 
   // OG triggers access permissions rebuild.
   node_access_rebuild();
@@ -956,15 +957,23 @@ function cmtls_profile_update_7202() {
     'access administration pages' => 'og',
   ));
 
-  // New translations.
-  cmtls_install_translations();
-
   // Enable CSS/JS compression.
   variable_set('preprocess_css', 1);
   variable_set('preprocess_js', 1);
 
   // Do not show error messages.
   variable_set('error_level', 0);
+}
+
+/**
+ * Update 2.0-beta4
+ */
+function cmtls_profile_update_7203() {
+  // Add the editor role.
+  cmtls_add_editor_role();
+
+  // New translations.
+  cmtls_install_translations();
 }
 
 /**
@@ -977,4 +986,84 @@ function cmtls_install_translations() {
       batch_set(locale_batch_by_language($key));
     }
   }
+}
+
+/**
+ * Add editor role (beta4).
+ */
+function cmtls_add_editor_role() {
+  $admin_role = user_role_load_by_name('administrator');
+
+  $role = new stdClass();
+  $role->name = 'cmtls_editor';
+
+  $role->weight = $admin_role->weight;
+
+  $admin_role->weight++;
+
+  user_role_save($admin_role);
+  user_role_save($role);
+
+  // Create a default role for site administrators, with all available permissions assigned.
+  user_role_save($role);
+  user_role_grant_permissions($role->rid, array(
+    'use text format full_html',
+    'access administration menu',
+    'flush caches',
+    'administer blocks',
+    'administer delta blocks',
+    'delete own fb_user authmap',
+    'administer image styles',
+    'administer languages',
+    'translate interface',
+    'edit media',
+    'administer media galleries',
+    'add media from remote sources',
+    'administer menu',
+    'administer nodes',
+    'view revisions',
+    'revert revisions',
+    'delete revisions',
+    'edit any cmtls_group content',
+    'delete any cmtls_group content',
+    'edit any cmtls_app content',
+    'delete any cmtls_app content',
+    'edit any cmtls_location content',
+    'delete any cmtls_location content',
+    'edit any cmtls_post content',
+    'delete any cmtls_post content',
+    'edit any cmtls_event content',
+    'delete any cmtls_event content',
+    'edit any media_gallery content',
+    'delete any media_gallery content',
+    'create page content',
+    'edit own page content',
+    'edit any page content',
+    'delete own page content',
+    'delete any page content',
+    'create webform content',
+    'edit own webform content',
+    'edit any webform content',
+    'delete own webform content',
+    'delete any webform content',
+    'administer url aliases',
+    'create url aliases',
+    'administer redirects',
+    'translate user-defined strings',
+    'translate admin strings',
+    'administer site configuration',
+    'administer themes',
+    'access site in maintenance mode',
+    'access site reports',
+    'block IP addresses',
+    'administer taxonomy',
+    'administer users',
+    'access all webform results',
+    'access own webform results',
+    'edit all webform submissions',
+    'delete all webform submissions',
+    'access own webform submissions',
+    'edit own webform submissions',
+    'delete own webform submissions',
+  ));
 }
