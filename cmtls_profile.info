@@ -44,6 +44,7 @@ dependencies[] = "webform"
 
 // CT modules
 dependencies[] = cmtls
+dependencies[] = cmtls_features
 dependencies[] = cmtls_event
 dependencies[] = cmtls_map
 dependencies[] = cmtls_media
