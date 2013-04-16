@@ -971,14 +971,26 @@ function cmtls_profile_update_7203() {
 }
 
 /**
- * Update 2.0-beta4 add the CT features module.
+ * Update 2.0-beta4 add the Facebook permissions.
  */
 function cmtls_profile_update_7204() {
   // Add new modules.
   module_enable(array(
-    'cmtls_features',
+    'fb_permission',
   ));
 
+  module_load_include('inc', 'fb_app', 'fb_app.admin');
+  
+  $cmtls_fb = fb_get_app(array('label' => 'cmtls_fb'));
+  if(!$cmtls_fb) {
+    $cmtls_fb = fb_get_app(array('label' => 'cmtls_fb', 'status' => '0'));
+  }
+  if($cmtls_fb) {
+    fb_get_app_data($cmtls_fb);
+    $cmtls_fb->fb_app_data['fb_permission']['prompt']['email'] = 'email';
+    fb_app_set_app_properties($cmtls_fb);
+  }
+  
   // New translations.
   cmtls_install_translations();
 
