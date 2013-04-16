@@ -1032,6 +1032,7 @@ function cmtls_add_editor_role() {
     'add media from remote sources',
     'administer menu',
     'administer nodes',
+    'access content overview',
     'view revisions',
     'revert revisions',
     'delete revisions',
