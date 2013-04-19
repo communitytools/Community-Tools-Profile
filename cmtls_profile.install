@@ -418,6 +418,7 @@ function cmtls_profile_install() {
   cmtls_profile_update_7202();
   cmtls_profile_update_7203();
   cmtls_profile_update_7204();
+  cmtls_profile_update_7205();
 
   // OG triggers access permissions rebuild.
   node_access_rebuild();
@@ -989,6 +990,29 @@ function cmtls_profile_update_7204() {
     fb_get_app_data($cmtls_fb);
     $cmtls_fb->fb_app_data['fb_permission']['prompt']['email'] = 'email';
     fb_app_set_app_properties($cmtls_fb);
+  }
+}
+
+/**
+ * Update 2.0-beta4 add paste as text buttons to wysiwyg.
+ */
+function cmtls_profile_update_7205() {
+  $query = db_select('wysiwyg', 'wysiwyg')
+    ->fields('wysiwyg')
+    ->condition('editor', 'ckeditor', '=')
+    ->condition('format', array('filtered_html', 'full_html'), 'IN');
+  
+  $result = $query->execute();
+  foreach ($result as $record) {
+    $settings = unserialize($record->settings);
+    $settings['buttons']['default']['PasteText'] = 1;
+    
+    db_merge('wysiwyg')
+      ->key(array('editor' => 'ckeditor', 'format' => $record->format))
+      ->fields(array(
+        'settings' => serialize($settings),
+      ))
+      ->execute();
   }
   
   // New translations.
