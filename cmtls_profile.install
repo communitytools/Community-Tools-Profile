@@ -1027,7 +1027,7 @@ function cmtls_profile_update_7205() {
  * When updating import the new dictionaries.
  */
 function cmtls_install_translations() {
-  if(function_exists('language_list')) {
+  if(function_exists('language_list') && function_exists('locale_batch_by_language')) {
     $languages = language_list('enabled');
     foreach ($languages[1] as $key => &$value) {
       batch_set(locale_batch_by_language($key));
