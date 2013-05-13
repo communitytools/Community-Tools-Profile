@@ -322,6 +322,11 @@ function cmtls_profile_install() {
 
   // realname config
   variable_set('realname_pattern', '[user:field_cmtls_firstname] [user:field_cmtls_lastname]');
+  
+  // OG default permissions
+  db_delete('og_role_permission')
+    ->condition('rid', array(1, 2, 3), 'IN')
+    ->execute();
 
   // non-member
   cmtls_og_role_grant_permissions(1, array(
@@ -370,6 +375,7 @@ function cmtls_profile_install() {
     'update own cmtls_location content' => 'og',
     'update own cmtls_post content' => 'og',
     'update own media_gallery content' => 'og',
+    'access administration pages' => 'og',
   ));
 
   // create the main group
@@ -419,6 +425,7 @@ function cmtls_profile_install() {
   cmtls_profile_update_7203();
   cmtls_profile_update_7204();
   cmtls_profile_update_7205();
+  cmtls_profile_update_7206();
 
   // OG triggers access permissions rebuild.
   node_access_rebuild();
@@ -1014,6 +1021,41 @@ function cmtls_profile_update_7205() {
       ))
       ->execute();
   }
+}
+
+/**
+ * Update 2.0-beta4 add default group admin permissions.
+ */
+function cmtls_profile_update_7206() {
+  // admin
+  cmtls_og_role_grant_permissions(3, array(
+    'add user' => 'og_ui',
+    'approve and deny subscription' => 'og_ui',
+    'unsubscribe' => 'og_ui',
+    'administer group' => 'og',
+    'delete any cmtls_app content' => 'og',
+    'delete any cmtls_event content' => 'og',
+    'delete any cmtls_location content' => 'og',
+    'delete any cmtls_post content' => 'og',
+    'delete any media_gallery content' => 'og',
+    'delete own cmtls_app content' => 'og',
+    'delete own cmtls_event content' => 'og',
+    'delete own cmtls_location content' => 'og',
+    'delete own cmtls_post content' => 'og',
+    'delete own media_gallery content' => 'og',
+    'update any cmtls_app content' => 'og',
+    'update any cmtls_event content' => 'og',
+    'update any cmtls_location content' => 'og',
+    'update any cmtls_post content' => 'og',
+    'update any media_gallery content' => 'og',
+    'update group' => 'og',
+    'update own cmtls_app content' => 'og',
+    'update own cmtls_event content' => 'og',
+    'update own cmtls_location content' => 'og',
+    'update own cmtls_post content' => 'og',
+    'update own media_gallery content' => 'og',
+    'access administration pages' => 'og',
+  ));
   
   // New translations.
   cmtls_install_translations();
